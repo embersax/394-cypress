@@ -10,7 +10,7 @@ import {
   Heading,
   Divider
 } from "rbx";
-import { ColumnGroup } from "rbx/grid/columns/column-group";
+
 import ItemList from "./ItemList";
 import { saveItem } from "./firebaseHelpers";
 import ReceiptModal from "./ReceiptModal";
@@ -61,7 +61,7 @@ const ListPage = ({ propItems, user, house }) => {
           modalState={{ attachReceipt, setAttachReceipt }}
           house={house}
         />
-        <ColumnGroup>
+        <Column.Group>
           <Column size={10} offset={1}>
             <Block />
             <ItemList
@@ -73,10 +73,10 @@ const ListPage = ({ propItems, user, house }) => {
             {selected.length === 0 ? (
               <div />
             ) : (
-              <Button color="info" onClick={() => setAttachReceipt(true)}>
-                Attach To Receipt
-              </Button>
-            )}
+                <Button color="info" onClick={() => setAttachReceipt(true)}>
+                  Attach To Receipt
+                </Button>
+              )}
             <Block />
             <Column size="three-fifths" offset="one-fifth">
               <Field align="centered" kind="addons">
@@ -104,7 +104,7 @@ const ListPage = ({ propItems, user, house }) => {
               </Field>
             </Column>
           </Column>
-        </ColumnGroup>
+        </Column.Group>
         <Block />
         <Divider color="info">Shopping Trips</Divider>
         <Block />
@@ -113,10 +113,10 @@ const ListPage = ({ propItems, user, house }) => {
     );
   } else if (user) {
     return (
-      <SignInScreen user={user}/>
+      <SignInScreen user={user} />
     );
   } else {
-    return <WelcomeScreen/>;
+    return <WelcomeScreen />;
   }
 };
 

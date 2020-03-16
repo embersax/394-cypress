@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Delete, Table, Button, Box, Heading, Input } from "rbx";
+import React from "react";
+import { Delete, Table, Button, Box, Heading } from "rbx";
 import { deleteItem, updateItemNumber } from "./firebaseHelpers";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
-import { updatingNotes, db } from "./firebaseHelpers";
+
+
 
 const getTotalQuantity = neededBy => {
   if (neededBy === undefined) {
@@ -48,13 +47,13 @@ const ItemList = ({ items, user, selectedState, house }) => {
         </Table.Head>
         <Table.Body>
           {items.map(data => (
-            <Table.Row 
+            <Table.Row
               key={data.productName}
               onClick={() => selectedState.toggle(data)}
               selected={rowSelected(data)}
             >
               <Table.Cell>
-                {data.productName} ({data.unit}) 
+                {data.productName} ({data.unit})
                 {/* <br/>
                 <Input
                     size="small"
@@ -65,13 +64,13 @@ const ItemList = ({ items, user, selectedState, house }) => {
               <Table.Cell>
                 {!!data.neededBy
                   ? Object.values(data.neededBy).map(person => (
-                      <React.Fragment
-                        key={`${data.productName}-${person.name}`}
-                      >
-                        {person.name.split(' ')[0]} ({person.quantity})
-                        <br />
-                      </React.Fragment>
-                    ))
+                    <React.Fragment
+                      key={`${data.productName}-${person.name}`}
+                    >
+                      {person.name.split(' ')[0]} ({person.quantity})
+                      <br />
+                    </React.Fragment>
+                  ))
                   : ""}
               </Table.Cell>
               <Table.Cell className="thin-col">
